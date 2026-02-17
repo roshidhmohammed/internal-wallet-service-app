@@ -9,7 +9,9 @@ const envFile = process.env.NODE_ENV === 'production'
 dotenv.config({ path: envFile });
 
 
-  console.log(process.env.NODE_ENV)
+  console.log("ENV PORT:", process.env.PORT);
+console.log("NODE_ENV:", process.env.NODE_ENV);
+
 
 
 

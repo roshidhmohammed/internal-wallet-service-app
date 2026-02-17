@@ -32,4 +32,4 @@ else
 fi
 
 echo " Starting Application..."
-npm run start
+exec npm run start
