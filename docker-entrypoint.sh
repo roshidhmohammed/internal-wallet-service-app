@@ -3,9 +3,9 @@ set -e
 
 echo " Waiting for PostgreSQL..."
 
-until nc -z db 5432; do
-  sleep 2
-done
+# until nc -z db 5432; do
+#   sleep 2
+# done
 
 echo "DB Ready"
 
