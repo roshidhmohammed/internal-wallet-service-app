@@ -13,7 +13,7 @@ dotenv.config({ path: envFile });
 
 
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 async function startServer() {
   try {
