@@ -1,0 +1,38 @@
+version : "3.9"
+
+services:
+  app:
+    image: internal_wallet:latest
+    container_name:  internal_wallet_api
+    restart: unless-stopped
+    env_file:
+      - /opt/wallet/.env.production
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    networks:
+      - wallet_net
+
+  db:
+    image: postgres:15-alpine
+    container_name:  internal_wallet_db
+    restart: unless-stopped
+    env_file:
+      - /opt/wallet/.env.production
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - wallet_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wallet_service_app"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+networks:
+  wallet_net:
+
+volumes:
+  postgres_data

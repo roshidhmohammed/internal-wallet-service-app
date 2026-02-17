@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    container_name: internal_wallet
+    command: npm run dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env.development
+    depends_on:
+      - db
+    networks:
+      - wallet_net
+    ports:
+      - "8000:8000"
+    # restart: always
+  db:
+    image: postgres:18-alpine
+    container_name: internal_wallet_db
+    # restart: always
+    # environment:
+    #   POSTGRES_USER: wallet_service_app
+    #   POSTGRES_PASSWORD: Roshidh75111
+    #   POSTGRES_DB: walletdb
+    env_file:
+      - .env.development
+    volumes:
+      - dev_postgres_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    networks:
+      - wallet_net
+
+networks:
+  wallet_net:
+
+volumes:
+  dev_postgres_data:
+

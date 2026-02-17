@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  wallets   Wallet[]
+  createdAt DateTime @default(now())
+}
+
+model AssetType {
+  id             Int             @id @default(autoincrement())
+  name           String
+  code           String          @unique
+  walletBalances WalletBalance[]
+  walletEntries  WalletEntry[]
+  createdAt      DateTime        @default(now())
+}
+
+model Wallet {
+  id        String          @id @default(uuid())
+  ownerId   String?
+  ownerType OwnerType
+  user      User?           @relation(fields: [ownerId], references: [id])
+  balances  WalletBalance[]
+  entries   WalletEntry[]
+  createdAt DateTime        @default(now())
+}
+
+model WalletBalance {
+  id          String    @id @default(uuid())
+  walletId    String
+  assetTypeId Int
+  balance     BigInt
+  version     Int       @default(1)
+
+  wallet    Wallet    @relation(fields: [walletId], references: [id])
+  assetType AssetType @relation(fields: [assetTypeId], references: [id])
+
+  @@unique([walletId, assetTypeId])
+}
+
+model WalletTransaction {
+  id          String           @id @default(uuid())
+  referenceId String           @unique
+  type        TransactionType
+  status      TransactionStatus @default(SUCCESS)
+  createdAt   DateTime         @default(now())
+  entries     WalletEntry[]
+}
+
+model WalletEntry {
+  id            String            @id @default(uuid())
+  transactionId String
+  walletId      String
+  assetTypeId   Int
+  amount        BigInt
+
+  transaction WalletTransaction @relation(fields: [transactionId], references: [id])
+  wallet      Wallet            @relation(fields: [walletId], references: [id])
+  assetType   AssetType         @relation(fields: [assetTypeId], references: [id])
+}
+
+enum OwnerType {
+  USER
+  SYSTEM
+}
+
+enum TransactionType {
+  TOPUP
+  BONUS
+  SPEND
+}
+
+enum TransactionStatus {
+  SUCCESS
+  FAILED
+}
