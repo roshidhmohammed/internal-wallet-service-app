@@ -9,8 +9,8 @@ echo " Waiting for PostgreSQL..."
 
 echo "DB Ready"
 
-echo "🚀 Running migrations..."
-npx prisma migrate deploy
+# echo "🚀 Running migrations..."
+# npx prisma migrate deploy
 
 # echo "🚀 Running migrations..."
 # npx prisma migrate deploy
