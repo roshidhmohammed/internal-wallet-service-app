@@ -8,7 +8,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production&& prisma  node src/server.js",
+    "start": "NODE_ENV=production  node src/server.js",
     "dev": "set NODE_ENV=development&& nodemon src/server.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev"
