@@ -19,10 +19,10 @@ npx prisma migrate deploy
 # npx prisma db seed
 
 # Check if Wallet table is empty
-WALLET_COUNT=$(npx prisma db execute --stdin <<EOF
-SELECT COUNT(*) FROM "Wallet";
-EOF
-)
+# WALLET_COUNT=$(npx prisma db execute --stdin <<EOF
+# SELECT COUNT(*) FROM "Wallet";
+# EOF
+# )
 
 if echo "$WALLET_COUNT" | grep -q "0"; then
   echo "🌱 Seeding database..."
