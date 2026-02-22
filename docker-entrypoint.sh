@@ -9,14 +9,14 @@ echo " Waiting for PostgreSQL..."
 
 echo "DB Ready"
 
-# echo "🚀 Running migrations..."
+# echo " Running migrations..."
 # npx prisma migrate deploy
 
-# echo "🚀 Running migrations..."
+# echo " Running migrations..."
 # npx prisma migrate deploy
 
-echo "📦 Syncing Prisma schema with database..."
-npx prisma db push --accept-data-loss
+# echo " Syncing Prisma schema with database..."
+# npx prisma db push --accept-data-loss
 
 # echo " Seeding database..."
 # npx prisma db seed
@@ -28,17 +28,17 @@ npx prisma db push --accept-data-loss
 # )
 
 # if echo "$WALLET_COUNT" | grep -q "0"; then
-#   echo "🌱 Seeding database..."
+#   echo " Seeding database..."
 #   npx prisma db seed
 # else
-#   echo "✅ Database already seeded. Skipping seed."
+#   echo "Database already seeded. Skipping seed."
 # fi
 
 # Optional: Run seed safely (will not fail container if already seeded)
-if [ "$RUN_SEED" = "true" ]; then
-  echo "🌱 Running database seed..."
-  npx prisma db seed || true
-fi
+# if [ "$RUN_SEED" = "true" ]; then
+#   echo " Running database seed..."
+#   npx prisma db seed || true
+# fi
 
 echo " Starting Application..."
 exec npm run start
