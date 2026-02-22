@@ -107,5 +107,5 @@ isolationLevel: 'Serializable'
 
     Ensuring auditability and transaction consistency.
 5. Composite Unique Constraints-
-    - Prevents duplicate balance records under concurrency.
+      Prevents duplicate balance records under concurrency.
 
