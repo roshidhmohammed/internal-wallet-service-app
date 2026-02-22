@@ -41,9 +41,10 @@ POSTGRES_DB=
 NODE_ENV=""
 ```
 
-    - For production stage - create *.env.production"
+ - For production stage - create *.env.production"
 
-    Add:
+   Add:
+
 ```bash
 PORT=
 DATABASE_URL=""
@@ -51,12 +52,6 @@ POSTGRES_USER=
 POSTGRES_PASSWORD=""
 POSTGRES_DB=
 NODE_ENV=""
-```
-
-3.  Install all the dependencies used in this app using the below command:
-
-```bash
-npm install
 ```
 
 3.  Start the project for Development Environment
