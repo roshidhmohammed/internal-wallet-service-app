@@ -91,6 +91,7 @@ Open [http://localhost:8000/health](http://localhost:8000/health) with your brow
 isolationLevel: 'Serializable'
 ```
 This ensures strict ACID guarantees.
+
 2. Idempotency Protection-
      Each transaction includes a unique referenceId enforced at the database level using a unique constraint.
      Prevents duplicate transaction execution.
