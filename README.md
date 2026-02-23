@@ -60,6 +60,8 @@ NODE_ENV=""
 npx prisma migrate dev --name init
 ```
 
+- This commad will create teh migrations folder on the prisma/...
+
 3.  Start the project for Development Environment
 
 ```bash
