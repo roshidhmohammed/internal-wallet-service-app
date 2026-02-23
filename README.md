@@ -65,7 +65,7 @@ npx prisma migrate dev --name init
 4.  Start the project for Development Environment
 
 ```bash
-docker-compose -f docker-compose.production.yaml up --build
+docker-compose -f docker-compose.development.yaml up --build
 ```
 
 5. Check if DB container is running:
@@ -99,7 +99,7 @@ Open [http://localhost:8000/health](http://localhost:8000/health) with your brow
   1. With the prisma/seed.js file, we can initialize the starting data into the db (already present in the repo).
   2. For seeding the data, just the run the app running command via docker mentioned in the above section or below:
 ```bash
-docker-compose -f docker-compose.production.yaml up --build
+docker-compose -f docker-compose.development.yaml up --build
 ```
 
 # Choice of technology and why.
