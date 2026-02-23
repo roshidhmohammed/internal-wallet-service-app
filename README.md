@@ -62,18 +62,18 @@ npx prisma migrate dev --name init
 
 - This commad will create teh migrations folder on the prisma/...
 
-3.  Start the project for Development Environment
+4.  Start the project for Development Environment
 
 ```bash
 docker-compose -f docker-compose.production.yaml up --build
 ```
 
-4. Check if DB container is running:
+5. Check if DB container is running:
 ```bash
 docker ps
 ```
 
-5. For visualizing the data table on the docker, follow the below steps:
+6. For visualizing the data table on the docker, follow the below steps:
     - Go to the docker terminal
     - Execute the below command:
 ```bash
