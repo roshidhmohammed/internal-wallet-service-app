@@ -59,6 +59,15 @@ NODE_ENV=""
 ```bash
 npx prisma migrate dev --name init
 ```
+   - While running this, make sure that the db connection url looks like the below format:
+```bash
+"postgresql://POSTGRES_USER:POSTGRES_PASSWORD@localhost:5432/walletdb?schema=public"
+```
+ - After creating the migration file, change the connection url in the below format
+ ```bash
+"postgresql://POSTGRES_USER:POSTGRES_PASSWORD@db:5432/walletdb?schema=public"
+```
+   
 
 - This commad will create teh migrations folder on the prisma/...
 
