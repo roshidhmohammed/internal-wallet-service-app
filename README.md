@@ -54,6 +54,12 @@ POSTGRES_DB=
 NODE_ENV=""
 ```
 
+3. Add the migration file using the below command:
+
+```bash
+npx prisma migrate dev --name init
+```
+
 3.  Start the project for Development Environment
 
 ```bash
@@ -65,6 +71,22 @@ docker-compose -f docker-compose.production.yaml up --build
 docker ps
 ```
 
+5. For visualizing the data table on the docker, follow the below steps:
+    - Go to the docker terminal
+    - Execute the below command:
+```bash
+docker exec -it internal_wallet_db psql -U wallet_service_app -d walletdb
+```     
+  - For viewing the wallet table, execute teh below query on the terminal:
+
+```bash
+SELECT * FROM "Wallet";
+```
+  - For users table:
+```bash
+SELECT * FROM "User";
+```
+
 Open [http://localhost:8000/health](http://localhost:8000/health) with your browser to see the app.
 
 
@@ -72,7 +94,11 @@ Open [http://localhost:8000/health](http://localhost:8000/health) with your brow
 
    - This project uses PostgreSQL + Prisma ORM running via Docker.
 
-1. With the prisma/seed.js file, we can initialize the starting data into the db.
+  1. With the prisma/seed.js file, we can initialize the starting data into the db (already present in the repo).
+  2. For seeding the data, just the run the app running command via docker mentioned in the above section or below:
+```bash
+docker-compose -f docker-compose.production.yaml up --build
+```
 
 # Choice of technology and why.
 
